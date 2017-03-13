@@ -10,6 +10,9 @@
     "react-tap-event-plugin": "^2.0.1"
   },
   "devDependencies": {
+    "enzyme": "^2.7.1",
+    "jest-enzyme": "^2.1.2",
+    "react-addons-test-utils": "^15.4.2",
     "react-scripts": "0.9.5"
   },
   "scripts": {
