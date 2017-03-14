@@ -7,7 +7,7 @@ class Lawsuits extends Component {
             <div>
                 <h2>Lawsuits</h2>
 
-                <ul>
+                <ul role="navigation">
                     <li><NavLink to="/lawsuits/lawsuit1">Lawsuit 1</NavLink></li>
                     <li><NavLink to="/lawsuits/lawsuit2">Lawsuit 2</NavLink></li>
                 </ul>
@@ -17,5 +17,9 @@ class Lawsuits extends Component {
         );
     }
 }
+
+Lawsuits.propTypes = {
+    children: React.PropTypes.element.isRequired,
+};
 
 export default Lawsuits;
