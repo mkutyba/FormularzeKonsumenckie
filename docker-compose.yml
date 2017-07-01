@@ -5,26 +5,25 @@ services:
   app_data:
     image: tianon/true
     volumes:
-      - .:/var/node/app/
+      - .:/usr/src/app/
 
   react:
-    image: node:6
+    build: .
     volumes_from:
       - app_data
-    working_dir: /var/node/app/
+    working_dir: /usr/src/app/
     ports:
       - 3000:3000
-    command: yarn start
 
   react_test:
-    image: node:6
+    build: .
     volumes_from:
       - app_data
-    working_dir: /var/node/app/
+    working_dir: /usr/src/app/
     command: yarn test
 
   cli:
-    image: node:6
+    build: .
     volumes_from:
       - app_data
-    working_dir: /var/node/app/
+    working_dir: /usr/src/app/
