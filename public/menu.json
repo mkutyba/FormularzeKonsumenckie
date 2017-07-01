@@ -1,0 +1,8 @@
+[
+    {"label": "O co tu chodzi?", "key": "/"},
+    {"label": "Formularze i wnioski", "key": "/forms", "children": [
+        {"label": "Form 1", "key": "/form1"},
+        {"label": "Form 2", "key": "/form2"}
+    ]},
+    {"label": "Pozwy, skargi i inne", "key": "/lawsuits"}
+]

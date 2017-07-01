@@ -1,19 +1,59 @@
 import React, { Component } from 'react';
-import NavLink from './ui-elements/NavLink'
+import NavLink from './ui-elements/NavLink';
+import DrawerMenu from './ui-elements/DrawerMenu';
+import AppBar from 'material-ui/AppBar';
+import { browserHistory } from 'react-router'
 
 class App extends Component {
+    state = {
+        navDrawerOpen: false,
+    };
+
+    handleToggleNavDrawer = () => {
+        this.setState({
+            navDrawerOpen: !this.state.navDrawerOpen,
+        });
+    };
+
+    handleChangeRequestNavDrawer = (open) => {
+        this.setState({
+            navDrawerOpen: open,
+        });
+    };
+
+    handleChangeList = (event, value) => {
+        if (value) {
+            browserHistory.push(value);
+            this.setState({
+                navDrawerOpen: false,
+            });
+        }
+    };
+
     render() {
+        const { location, children } = this.props;
+        let { navDrawerOpen } = this.state;
+
+        const title = "Formularze Konsumenckie UOKiK";
+
         return (
             <div>
-                <h1>Formularze Konsumenckie</h1>
+                <AppBar
+                    title={title}
+                    iconClassNameRight="muidocs-icon-navigation-expand-more"
+                    onLeftIconButtonTouchTap={this.handleToggleNavDrawer}
+                />
 
-                <ul role="navigation">
-                    <li><NavLink to="/" onlyActiveOnIndex={true}>O co tu chodzi?</NavLink></li>
-                    <li><NavLink to="/forms">Formularze i wnioski</NavLink></li>
-                    <li><NavLink to="/lawsuits">Pozwy, skargi i inne</NavLink></li>
-                </ul>
+                <DrawerMenu
+                    location={location}
+                    onRequestChangeNavDrawer={this.handleChangeRequestNavDrawer}
+                    onChangeList={this.handleChangeList}
+                    open={navDrawerOpen}
+                />
 
-                {this.props.children}
+                <div className="main">
+                    {children}
+                </div>
             </div>
         );
     }
